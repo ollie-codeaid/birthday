@@ -1,2 +1,11 @@
 bday
+
+.DS_Store
+db.sqlite3
+media/
+
 *.swp
+
+__pycache__/
+*.pyc
+*.pyo
