@@ -1,8 +1,9 @@
 <h1>Friends</h1>
 <ul>
-{% for friend in object_list %}
-<li><a href="/friend/{{friend.pk}}/">{{ friend.name }}</a href> - <img src="{{ friend.mug_shot.url }}" width=100/></li>
-{% empty %}
+    {% for friend in object_list %}
+    <li><a href="/friend/{{friend.pk}}/">{{ friend.name }}</a> - <img src="{{ friend.mug_shot.url }}" width=100/></li>
+    {% empty %}
     <li>No friends yet.</li>
-{% endfor %}
+    {% endfor %}
+    <li><a href="/friend/add">Add friend</a></li>
 </ul>

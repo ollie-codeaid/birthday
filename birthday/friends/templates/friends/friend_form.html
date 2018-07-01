@@ -1,5 +1,14 @@
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
-    {{ form }}
+    <ul>
+	<li>{{ form.name }}</li>
+	<li>{{ form.mug_shot }}</li>
+    </ul>
     <input type="submit" value="Submit" />
 </form>
+<ul>
+    {% if friend %}
+    <li><a href="/friend/{{ friend.pk }}/delete/">Delete</a></li>
+    {% endif %}
+    <li><a href="/">All friends</a></li>
+</ul>
