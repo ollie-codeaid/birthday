@@ -6,6 +6,5 @@ media/
 
 *.swp
 
-__pycache__/
 *.pyc
 *.pyo
