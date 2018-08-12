@@ -1,5 +1,6 @@
 from unittest import skip
 
+from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.urls import reverse
@@ -14,6 +15,10 @@ test_image = SimpleUploadedFile(
 
 
 class TestFriendView(TestCase):
+    def setUp(self):
+        self.admin = User.objects.create_user(
+                username='admin', password='admin')
+
     @skip('Form invalid - can not figure this out...')
     def test_friend_create_view_success(self):
         friend_data = {
@@ -22,6 +27,7 @@ class TestFriendView(TestCase):
                 }
         url = reverse('friend-add')
 
+        self.client.force_login(self.admin)
         self.client.post(url, data=friend_data)
 
         self.assertEqual(1, len(Friend.objects.all()))
@@ -42,6 +48,7 @@ class TestFriendView(TestCase):
                 }
         url = reverse('friend-update', args=(friend.pk, ))
 
+        self.client.force_login(self.admin)
         response = self.client.post(url, data=update_data)
         self.assertEqual(200, response.status_code)
 
@@ -58,12 +65,17 @@ class TestFriendView(TestCase):
                 )
         url = reverse('friend-delete', args=(friend.pk, ))
 
+        self.client.force_login(self.admin)
         self.client.post(url)
 
         self.assertEqual(0, len(Friend.objects.all()))
 
 
 class TestAccomplishmentView(TestCase):
+    def setUp(self):
+        self.admin = User.objects.create_user(
+                username='admin', password='admin')
+
     def test_accomplishment_create_view_success(self):
         accomplishment_data = {
                 'description': 'Complete park run',
@@ -71,6 +83,7 @@ class TestAccomplishmentView(TestCase):
                 }
         url = reverse('accomplishment-add')
 
+        self.client.force_login(self.admin)
         self.client.post(url, data=accomplishment_data)
 
         self.assertEqual(1, len(Accomplishment.objects.all()))
@@ -91,6 +104,7 @@ class TestAccomplishmentView(TestCase):
                 }
         url = reverse('accomplishment-update', args=(accomplishment.pk, ))
 
+        self.client.force_login(self.admin)
         response = self.client.post(url, data=update_data)
         self.assertEqual(302, response.status_code)
 
@@ -110,6 +124,7 @@ class TestAccomplishmentView(TestCase):
                 )
         url = reverse('accomplishment-delete', args=(accomplishment.pk, ))
 
+        self.client.force_login(self.admin)
         self.client.post(url)
 
         self.assertEqual(0, len(Accomplishment.objects.all()))
