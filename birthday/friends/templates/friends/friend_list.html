@@ -1,10 +1,15 @@
+{% load friend_extras %}
 <h1>Friends</h1>
+{% sort_for_collage object_list as collage_friends %}
+{% for friend_row in collage_friends %}
+{% for friend in friend_row %}
+<a href="/friend/{{friend.pk}}/"><img src="{{ friend.mug_shot.url }}" alt="{{ friend.name }}" width=200/></a>
+{% endfor %}
+</br>
+{% empty %}
+<h3>No friends yet.</h3>
+{% endfor %}
 <ul>
-    {% for friend in object_list %}
-    <li><a href="/friend/{{friend.pk}}/">{{ friend.name }}</a> - <img src="{{ friend.mug_shot.url }}" width=100/></li>
-    {% empty %}
-    <li>No friends yet.</li>
-    {% endfor %}
     <li><a href="/friend/add">Add friend</a></li>
     <li><a href="/leaderboard">Leaderboard</a></li>
     <li><a href="/accomplishments/">All accomplishments</a></li>
