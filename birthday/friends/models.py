@@ -15,6 +15,15 @@ class Friend(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def total_points(self):
+        total_points = 0
+
+        for accomplishment in self.has_accomplished.all():
+            total_points += accomplishment.points
+
+        return total_points
+
 
 class Accomplishment(models.Model):
     description = models.CharField(max_length=1023)
