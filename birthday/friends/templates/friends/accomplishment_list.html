@@ -1,7 +1,7 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
 <div class="row justify-content-center">
-    <table>
+    <table class="table">
 	{% for accomplishment in object_list %}
 	<tr>
 	    <td><a href="/accomplishment/{{accomplishment.pk}}/">{{ accomplishment.description }}</a></td>
