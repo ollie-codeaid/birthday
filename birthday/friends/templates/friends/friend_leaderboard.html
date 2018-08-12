@@ -1,24 +1,25 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
 {% load friend_extras %}
-<h1>Leaderboard</h1>
-<table>
-    <tr>
-	<th></th>
-	<th>Points</th>
-	<th>Accomplishments</th>
-    </tr>
-    {% sort_by_total_points object_list as ordered_friends %}
-    {% for friend in ordered_friends %}
-    <tr>
-	<td>{{ friend.name }}</td>
-	<td>{{ friend.total_points }}</td>
-	<td>
-	    {% for accomplishment in friend.has_accomplished.all %}
-	    {{ accomplishment }}
-	    {% endfor %}
-	</td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="row justify-content-center">
+    <table>
+	<tr>
+	    <th></th>
+	    <th>Points</th>
+	    <th>Accomplishments</th>
+	</tr>
+	{% sort_by_total_points object_list as ordered_friends %}
+	{% for friend in ordered_friends %}
+	<tr>
+	    <td>{{ friend.name }}</td>
+	    <td>{{ friend.total_points }}</td>
+	    <td>
+		{% for accomplishment in friend.has_accomplished.all %}
+		{{ accomplishment }}
+		{% endfor %}
+	    </td>
+	</tr>
+	{% endfor %}
+    </table>
+</div>
 {% endblock %}

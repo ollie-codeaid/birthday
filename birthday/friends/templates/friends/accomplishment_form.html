@@ -1,17 +1,28 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
+<div class="row justify-content-center">
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
-    <ul>
-	<li>Description: {{ form.description }}</li>
-	<li>Points: {{ form.points }}</li>
-	<li>Accomplished by: {{ form.accomplished_by }}</li>
-    </ul>
+	<table>
+	    <tr>
+		<td>Description</td>
+		<td>{{ form.description }}</td>
+	    </tr>
+	    <tr>
+		<td>Points</td>
+		<td>{{ form.points }}</td>
+	    </tr>
+	    <tr>
+		<td>Accomplished By</td>
+		<td>{{ form.accomplished_by }}</td>
+	    </tr>
+	</table>
     <input type="submit" value="Submit" />
 </form>
-<ul>
+</div>
+<div class="row justify-content-center">
     {% if accomplishment %}
-    <li><a href="/accomplishment/{{ accomplishment.pk }}/delete/">Delete</a></li>
+    <a href="/accomplishment/{{ accomplishment.pk }}/delete/">Delete</a>
     {% endif %}
-</ul>
+</div>
 {% endblock %}

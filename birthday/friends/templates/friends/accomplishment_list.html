@@ -1,11 +1,15 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
-<h1>Accomplishments</h1>
-<ul>
-    {% for accomplishment in object_list %}
-    <li><a href="/accomplishment/{{accomplishment.pk}}/">{{ accomplishment.description }}</a> - {{ accomplishment.points }}</li>
-    {% empty %}
-    <li>No accomplishments yet.</li>
-    {% endfor %}
-</ul>
+<div class="row justify-content-center">
+    <table>
+	{% for accomplishment in object_list %}
+	<tr>
+	    <td><a href="/accomplishment/{{accomplishment.pk}}/">{{ accomplishment.description }}</a></td>
+	    <td>{{ accomplishment.points }}</td>
+	</tr>
+	{% empty %}
+	<tr><td>No accomplishments yet.</td></tr>
+	{% endfor %}
+    </table>
+</div>
 {% endblock %}

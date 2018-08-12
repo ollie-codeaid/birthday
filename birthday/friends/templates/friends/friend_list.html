@@ -1,9 +1,6 @@
 {% extends "friends/scaffold.html" %}
 {% load friend_extras %}
 {% block content %}
-<div class="row justify-content-center">
-    <h1>Friends</h1>
-</div>
 {% sort_for_collage object_list as collage_friends %}
 {% for friend_row in collage_friends %}
 <div class="row justify-content-center">

@@ -1,17 +1,28 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
-<form enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    <ul>
-	<li>Name: {{ form.name }}</li>
-	<li>Mug Shot: {{ form.mug_shot }}</li>
-	<li>Has Accomplished: {{ form.has_accomplished }}</li>
-    </ul>
-    <input type="submit" value="Submit" />
-</form>
-<ul>
+<div class="row justify-content-center">
+    <form enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+	<table>
+	    <tr>
+		<td>Name</td>
+		<td>{{ form.name }}</td>
+	    </tr>
+	    <tr>
+		<td>Picture</td>
+		<td>{{ form.mug_shot }}</td>
+	    </tr>
+	    <tr>
+		<td>Has Accomplished</td>
+		<td>{{ form.has_accomplished }}</td>
+	    </tr>
+	</table>
+	<input type="submit" value="Submit" />
+    </form>
+</div>
+<div class="row justify-content-center">
     {% if friend %}
-    <li><a href="/friend/{{ friend.pk }}/delete/">Delete</a></li>
+    <a href="/friend/{{ friend.pk }}/delete/">Delete</a>
     {% endif %}
-</ul>
+</div>
 {% endblock %}
