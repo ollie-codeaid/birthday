@@ -1,3 +1,5 @@
+{% extends "friends/scaffold.html" %}
+{% block content %}
 {% load friend_extras %}
 <h1>Leaderboard</h1>
 <table>
@@ -19,4 +21,4 @@
     </tr>
     {% endfor %}
 </table>
-<a href="/">Photos view</a>
+{% endblock %}

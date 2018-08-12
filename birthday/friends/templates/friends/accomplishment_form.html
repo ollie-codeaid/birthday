@@ -1,3 +1,5 @@
+{% extends "friends/scaffold.html" %}
+{% block content %}
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
     <ul>
@@ -11,5 +13,5 @@
     {% if accomplishment %}
     <li><a href="/accomplishment/{{ accomplishment.pk }}/delete/">Delete</a></li>
     {% endif %}
-    <li><a href="/accomplishments/">All accomplishments</a></li>
 </ul>
+{% endblock %}

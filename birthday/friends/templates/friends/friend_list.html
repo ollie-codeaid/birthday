@@ -1,16 +1,19 @@
+{% extends "friends/scaffold.html" %}
 {% load friend_extras %}
-<h1>Friends</h1>
+{% block content %}
+<div class="row justify-content-center">
+    <h1>Friends</h1>
+</div>
 {% sort_for_collage object_list as collage_friends %}
 {% for friend_row in collage_friends %}
-{% for friend in friend_row %}
-<a href="/friend/{{friend.pk}}/"><img src="{{ friend.mug_shot.url }}" alt="{{ friend.name }}" width=200/></a>
-{% endfor %}
-</br>
+<div class="row justify-content-center">
+    {% for friend in friend_row %}
+    <a href="/friend/{{friend.pk}}/"><img src="{{ friend.mug_shot.url }}" alt="{{ friend.name }}" width=200/></a>
+    {% endfor %}
+</div>
 {% empty %}
-<h3>No friends yet.</h3>
+<div class="row justify-content-center">
+    <h3>No friends yet.</h3>
+</div>
 {% endfor %}
-<ul>
-    <li><a href="/friend/add">Add friend</a></li>
-    <li><a href="/leaderboard">Leaderboard</a></li>
-    <li><a href="/accomplishments/">All accomplishments</a></li>
-</ul>
+{% endblock %}
