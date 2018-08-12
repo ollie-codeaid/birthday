@@ -5,11 +5,14 @@ from birthday import settings
 from friends.views import (
         AccomplishmentCreate, AccomplishmentDelete,
         AccomplishmentList, AccomplishmentUpdate,
-        FriendCreate, FriendDelete,
+        FriendCreate, FriendDelete, FriendLeaderboard,
         FriendList, FriendUpdate)
 
 urlpatterns = [
     path('', FriendList.as_view(), name='friend-list'),
+    path('leaderboard',
+         FriendLeaderboard.as_view(),
+         name='friend-leaderboard'),
     path('friend/add/', FriendCreate.as_view(), name='friend-add'),
     path('friend/<int:pk>/', FriendUpdate.as_view(), name='friend-update'),
     path('friend/<int:pk>/delete/',

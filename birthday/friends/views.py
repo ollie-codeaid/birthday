@@ -83,6 +83,12 @@ class FriendDelete(DeleteView):
 
 class FriendList(ListView):
     model = Friend
+    template_name = 'friends/friend_list.html'
+
+
+class FriendLeaderboard(ListView):
+    model = Friend
+    template_name = 'friends/friend_leaderboard.html'
 
 
 class AccomplishmentCreate(FriendAccomplishmentAwareMixin, CreateView):
@@ -136,3 +142,4 @@ class AccomplishmentDelete(DeleteView):
 
 class AccomplishmentList(ListView):
     model = Accomplishment
+
