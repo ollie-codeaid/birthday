@@ -30,4 +30,6 @@ def sort_for_collage(queryset):
             collage_friends.append(row_friends)
             row_friends = []
 
+    collage_friends.append(row_friends)
+
     return collage_friends
