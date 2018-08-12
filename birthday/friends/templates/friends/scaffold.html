@@ -17,12 +17,14 @@
 		<li class="nav-item">
 		    <a class="nav-link" href="/accomplishments/">Accomplishments</a>
 		</li>
+		{% if user.is_authenticated %}
 		<li class="nav-item">
 		    <a class="nav-link" href="/friend/add/">Add Friend</a>
 		</li>
 		<li class="nav-item">
 		    <a class="nav-link" href="/accomplishment/add/">Add Accomplishment</a>
 		</li>
+		{% endif %}
 	    </ul>
 	</nav>
 	<div class="container">

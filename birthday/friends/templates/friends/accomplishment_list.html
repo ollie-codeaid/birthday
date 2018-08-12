@@ -4,7 +4,13 @@
     <table class="table">
 	{% for accomplishment in object_list %}
 	<tr>
-	    <td><a href="/accomplishment/{{accomplishment.pk}}/">{{ accomplishment.description }}</a></td>
+	    <td>
+	    	{% if user.is_authenticated %}
+		<a href="/accomplishment/{{accomplishment.pk}}/">{{ accomplishment.description }}</a>
+		{% else %}
+		{{ accomplishment.description }}
+		{% endif %}
+	    </td>
 	    <td>{{ accomplishment.points }}</td>
 	</tr>
 	{% empty %}

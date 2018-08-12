@@ -5,7 +5,11 @@
 {% for friend_row in collage_friends %}
 <div class="row justify-content-center">
     {% for friend in friend_row %}
-    <a href="/friend/{{friend.pk}}/"><img src="{{ friend.mug_shot.url }}" alt="{{ friend.name }}" width=200/></a>
+    {% if user.is_authenticated %}
+    <a href="/friend/{{friend.pk}}/"><img src="{{ friend.mug_shot.url }}" alt="{{ friend.name }}" width=200 height=200/></a>
+    {% else %}
+    <img src="{{ friend.mug_shot.url }}" alt="{{ friend.name }}" width=200 height=200/>
+    {% endif %}
     {% endfor %}
 </div>
 {% empty %}
