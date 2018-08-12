@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
@@ -34,9 +35,13 @@ class FriendAccomplishmentAwareMixin:
                 friend_accomplishment.save()
 
 
-class FriendCreate(FriendAccomplishmentAwareMixin, CreateView):
+class FriendCreate(
+        LoginRequiredMixin,
+        FriendAccomplishmentAwareMixin,
+        CreateView):
     model = Friend
     form_class = FriendForm
+    login_url = '/admin/login'
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -56,9 +61,13 @@ class FriendCreate(FriendAccomplishmentAwareMixin, CreateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class FriendUpdate(FriendAccomplishmentAwareMixin, UpdateView):
+class FriendUpdate(
+        LoginRequiredMixin,
+        FriendAccomplishmentAwareMixin,
+        UpdateView):
     model = Friend
     form_class = FriendForm
+    login_url = '/admin/login'
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -77,8 +86,9 @@ class FriendUpdate(FriendAccomplishmentAwareMixin, UpdateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class FriendDelete(DeleteView):
+class FriendDelete(LoginRequiredMixin, DeleteView):
     model = Friend
+    login_url = '/admin/login'
     success_url = reverse_lazy('friend-list')
 
 
@@ -92,9 +102,13 @@ class FriendLeaderboard(ListView):
     template_name = 'friends/friend_leaderboard.html'
 
 
-class AccomplishmentCreate(FriendAccomplishmentAwareMixin, CreateView):
+class AccomplishmentCreate(
+        LoginRequiredMixin,
+        FriendAccomplishmentAwareMixin,
+        CreateView):
     model = Accomplishment
     form_class = AccomplishmentForm
+    login_url = '/admin/login'
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -114,9 +128,13 @@ class AccomplishmentCreate(FriendAccomplishmentAwareMixin, CreateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class AccomplishmentUpdate(FriendAccomplishmentAwareMixin, UpdateView):
+class AccomplishmentUpdate(
+        LoginRequiredMixin,
+        FriendAccomplishmentAwareMixin,
+        UpdateView):
     model = Accomplishment
     form_class = AccomplishmentForm
+    login_url = '/admin/login'
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -135,8 +153,9 @@ class AccomplishmentUpdate(FriendAccomplishmentAwareMixin, UpdateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class AccomplishmentDelete(DeleteView):
+class AccomplishmentDelete(LoginRequiredMixin, DeleteView):
     model = Accomplishment
+    login_url = '/admin/login'
     fields = ['description', 'points', 'accomplished_by']
     success_url = reverse_lazy('friend-list')
 
