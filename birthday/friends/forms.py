@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, CheckboxSelectMultiple
 
 from .models import Accomplishment, Friend
 
@@ -11,9 +11,12 @@ class FriendForm(ModelForm):
                 'mug_shot',
                 'has_accomplished',
                 ]
+        widgets = {
+                'has_accomplished': CheckboxSelectMultiple,
+                }
 
 
-class AccompishmentForm(ModelForm):
+class AccomplishmentForm(ModelForm):
     class Meta:
         model = Accomplishment
         fields = [
@@ -21,3 +24,6 @@ class AccompishmentForm(ModelForm):
                 'points',
                 'accomplished_by',
                 ]
+        widgets = {
+                'accomplished_by': CheckboxSelectMultiple,
+                }

@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic.edit import (
         CreateView, DeleteView, UpdateView)
 from django.views.generic.list import ListView
+from friends.forms import AccomplishmentForm, FriendForm
 from friends.models import (
         Accomplishment, Friend, FriendAccomplishment)
 
@@ -35,7 +36,7 @@ class FriendAccomplishmentAwareMixin:
 
 class FriendCreate(FriendAccomplishmentAwareMixin, CreateView):
     model = Friend
-    fields = ['name', 'mug_shot', 'has_accomplished']
+    form_class = FriendForm
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -57,7 +58,7 @@ class FriendCreate(FriendAccomplishmentAwareMixin, CreateView):
 
 class FriendUpdate(FriendAccomplishmentAwareMixin, UpdateView):
     model = Friend
-    fields = ['name', 'mug_shot', 'has_accomplished']
+    form_class = FriendForm
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -93,7 +94,7 @@ class FriendLeaderboard(ListView):
 
 class AccomplishmentCreate(FriendAccomplishmentAwareMixin, CreateView):
     model = Accomplishment
-    fields = ['description', 'points', 'accomplished_by']
+    form_class = AccomplishmentForm
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
@@ -115,7 +116,7 @@ class AccomplishmentCreate(FriendAccomplishmentAwareMixin, CreateView):
 
 class AccomplishmentUpdate(FriendAccomplishmentAwareMixin, UpdateView):
     model = Accomplishment
-    fields = ['description', 'points', 'accomplished_by']
+    form_class = AccomplishmentForm
     success_url = reverse_lazy('friend-list')
 
     def form_valid(self, form):
