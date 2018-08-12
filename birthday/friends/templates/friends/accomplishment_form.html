@@ -1,0 +1,15 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <ul>
+	<li>Description: {{ form.description }}</li>
+	<li>Points: {{ form.points }}</li>
+	<li>Accomplished by: {{ form.accomplished_by }}</li>
+    </ul>
+    <input type="submit" value="Submit" />
+</form>
+<ul>
+    {% if accomplishment %}
+    <li><a href="/accomplishment/{{ accomplishment.pk }}/delete/">Delete</a></li>
+    {% endif %}
+    <li><a href="/accomplishments/">All accomplishments</a></li>
+</ul>

@@ -1,8 +1,9 @@
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
     <ul>
-	<li>{{ form.name }}</li>
-	<li>{{ form.mug_shot }}</li>
+	<li>Name: {{ form.name }}</li>
+	<li>Mug Shot: {{ form.mug_shot }}</li>
+	<li>Has Accomplished: {{ form.has_accomplished }}</li>
     </ul>
     <input type="submit" value="Submit" />
 </form>

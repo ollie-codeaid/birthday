@@ -1,0 +1,10 @@
+<h1>Accomplishments</h1>
+<ul>
+    {% for accomplishment in object_list %}
+    <li><a href="/accomplishment/{{accomplishment.pk}}/">{{ accomplishment.description }}</a> - {{ accomplishment.points }}</li>
+    {% empty %}
+    <li>No accomplishments yet.</li>
+    {% endfor %}
+    <li><a href="/accomplishment/add">Add accomplishment</a></li>
+    <li><a href="/">All friends</a></li>
+</ul>
