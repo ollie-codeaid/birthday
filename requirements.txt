@@ -1,4 +1,7 @@
-django
-django-cleanup
-pillow
-mock
+Django==2.0.6
+django-cleanup==2.1.0
+mock==2.0.0
+pbr==4.0.4
+Pillow==5.1.0
+pytz==2018.5
+six==1.11.0
