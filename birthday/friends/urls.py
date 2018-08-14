@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.urls import path
 
-from birthday import settings
+from django.conf import settings
 from friends.views import (
         AccomplishmentCreate, AccomplishmentDelete,
         AccomplishmentList, AccomplishmentUpdate,
