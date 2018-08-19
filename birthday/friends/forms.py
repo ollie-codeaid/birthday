@@ -1,6 +1,6 @@
 from django.forms import ModelForm, CheckboxSelectMultiple
 
-from .models import Accomplishment, Friend
+from .models import Accomplishment, Friend, Game
 
 
 class FriendForm(ModelForm):
@@ -27,3 +27,9 @@ class AccomplishmentForm(ModelForm):
         widgets = {
                 'accomplished_by': CheckboxSelectMultiple,
                 }
+
+
+class GameForm(ModelForm):
+    class Meta:
+        model = Game
+        fields = ['title', 'description']

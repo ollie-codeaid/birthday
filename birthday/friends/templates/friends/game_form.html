@@ -1,0 +1,24 @@
+{% extends "friends/scaffold.html" %}
+{% block content %}
+<div class="row justify-content-center">
+<form method="post">
+    {% csrf_token %}
+	<table class="table">
+	    <tr>
+		<td>Title</td>
+		<td>{{ form.title }}</td>
+	    </tr>
+	    <tr>
+		<td>Description</td>
+		<td>{{ form.description }}</td>
+	    </tr>
+	</table>
+    <input type="submit" value="Submit" />
+</form>
+</div>
+<div class="row justify-content-center">
+    {% if game %}
+    <a href="/game/{{ game.pk }}/delete/">Delete</a>
+    {% endif %}
+</div>
+{% endblock %}

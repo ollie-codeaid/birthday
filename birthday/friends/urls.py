@@ -6,7 +6,8 @@ from friends.views import (
         AccomplishmentCreate, AccomplishmentDelete,
         AccomplishmentList, AccomplishmentUpdate,
         FriendCreate, FriendDelete, FriendLeaderboard,
-        FriendList, FriendUpdate)
+        FriendList, FriendUpdate, GameCreate, GameDelete,
+        GameDetail, GameList, GameUpdate)
 
 urlpatterns = [
     path('', FriendList.as_view(), name='friend-list'),
@@ -30,6 +31,21 @@ urlpatterns = [
     path('accomplishment/<int:pk>/delete/',
          AccomplishmentDelete.as_view(),
          name='accomplishment-delete'),
+    path('games/',
+         GameList.as_view(),
+         name='game-list'),
+    path('game/add/',
+         GameCreate.as_view(),
+         name='game-add'),
+    path('game/<int:pk>/',
+         GameUpdate.as_view(),
+         name='game-update'),
+    path('game/<int:pk>/delete/',
+         GameDelete.as_view(),
+         name='game-delete'),
+    path('game/<int:pk>/detail/',
+         GameDetail.as_view(),
+         name='game-detail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

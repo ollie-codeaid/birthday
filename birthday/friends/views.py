@@ -2,12 +2,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.views.generic import DetailView
 from django.views.generic.edit import (
         CreateView, DeleteView, UpdateView)
 from django.views.generic.list import ListView
-from friends.forms import AccomplishmentForm, FriendForm
+from friends.forms import AccomplishmentForm, FriendForm, GameForm
 from friends.models import (
-        Accomplishment, Friend, FriendAccomplishment)
+        Accomplishment, Friend, FriendAccomplishment, Game)
 
 
 # Create your views here.
@@ -156,10 +157,40 @@ class AccomplishmentUpdate(
 class AccomplishmentDelete(LoginRequiredMixin, DeleteView):
     model = Accomplishment
     login_url = '/admin/login'
-    fields = ['description', 'points', 'accomplished_by']
     success_url = reverse_lazy('friend-list')
 
 
 class AccomplishmentList(ListView):
     model = Accomplishment
 
+
+class GameCreate(
+        LoginRequiredMixin,
+        CreateView):
+    model = Game
+    form_class = GameForm
+    login_url = '/admin/login'
+    success_url = reverse_lazy('game-list')
+
+
+class GameUpdate(
+        LoginRequiredMixin,
+        UpdateView):
+    model = Game
+    form_class = GameForm
+    login_url = '/admin/login'
+    success_url = reverse_lazy('game-list')
+
+
+class GameDelete(LoginRequiredMixin, DeleteView):
+    model = Game
+    login_url = '/admin/login'
+    success_url = reverse_lazy('game-list')
+
+
+class GameList(ListView):
+    model = Game
+
+
+class GameDetail(DetailView):
+    model = Game
