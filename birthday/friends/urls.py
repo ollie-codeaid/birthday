@@ -2,6 +2,7 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from django.conf import settings
+from django.views.generic import TemplateView
 from friends.views import (
         AccomplishmentCreate, AccomplishmentDelete,
         AccomplishmentList, AccomplishmentUpdate,
@@ -10,7 +11,7 @@ from friends.views import (
         GameDetail, GameList, GameUpdate)
 
 urlpatterns = [
-    path('', FriendList.as_view(), name='friend-list'),
+    path('list', FriendList.as_view(), name='friend-list'),
     path('leaderboard',
          FriendLeaderboard.as_view(),
          name='friend-leaderboard'),
@@ -46,6 +47,9 @@ urlpatterns = [
     path('game/<int:pk>/detail/',
          GameDetail.as_view(),
          name='game-detail'),
+    path('',
+         TemplateView.as_view(template_name='friends/map.html'),
+         name='map'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
