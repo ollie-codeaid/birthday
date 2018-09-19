@@ -15,8 +15,7 @@ def sort_by_total_points(queryset):
 @register.simple_tag
 def sort_for_collage(queryset):
     sorted_by_points = sort_by_total_points(queryset)
-    total_friends = len(sorted_by_points)
-    size = ceil(sqrt(total_friends))
+    size = 4
 
     count = 0
     collage_friends = []
