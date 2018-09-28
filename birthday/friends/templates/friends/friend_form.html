@@ -1,28 +1,28 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
 <div class="row justify-content-center">
-    <form enctype="multipart/form-data" method="post">
-	{% csrf_token %}
-	<table class="table">
-	    <tr>
-		<td>Name</td>
-		<td>{{ form.name }}</td>
-	    </tr>
-	    <tr>
-		<td>Picture</td>
-		<td>{{ form.mug_shot }}</td>
-	    </tr>
-	    <tr>
-		<td>Has Accomplished</td>
-		<td>{{ form.has_accomplished }}</td>
-	    </tr>
-	</table>
-	<input type="submit" value="Submit" />
-    </form>
-</div>
-<div class="row justify-content-center">
-    {% if friend %}
-    <a href="/friend/{{ friend.pk }}/delete/">Delete</a>
-    {% endif %}
+    <div class="col-sm-12 col-md-6 text-center">
+	<form enctype="multipart/form-data" method="post">
+	    {% csrf_token %}
+	    <table class="table">
+		<tr>
+		    <td>Name</td>
+		    <td>{{ form.name }}</td>
+		</tr>
+		<tr>
+		    <td>Picture</td>
+		    <td>{{ form.mug_shot }}</td>
+		</tr>
+		<tr>
+		    <td>Has Accomplished</td>
+		    <td>{{ form.has_accomplished }}</td>
+		</tr>
+	    </table>
+	    <input type="submit" value="Submit" />
+	</form>
+	{% if friend %}
+	<a href="/friend/{{ friend.pk }}/delete/">Delete</a>
+	{% endif %}
+    </div>
 </div>
 {% endblock %}

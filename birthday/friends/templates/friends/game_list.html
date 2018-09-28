@@ -1,21 +1,23 @@
 {% extends "friends/scaffold.html" %}
 {% block content %}
 <div class="row justify-content-center">
-    <table class="table">
-	{% for game in object_list %}
-	<tr>
-	    <td>
-		<a href="/game/{{game.pk}}/detail/">{{ game.title }}</a>
-	    </td>
-	    {% if user.is_authenticated %}
-	    <td>
-		<a href="/game/{{game.pk}}/">Update</a>
-	    </td>
-	    {% endif %}
-	</tr>
-	{% empty %}
-	<tr><td>No games yet.</td></tr>
-	{% endfor %}
-    </table>
+    <div class="col-sm-12 col-md-6 text-center">
+	<table class="table">
+	    {% for game in object_list %}
+	    <tr>
+		<td>
+		    <a href="/game/{{game.pk}}/detail/">{{ game.title }}</a>
+		</td>
+		{% if user.is_authenticated %}
+		<td>
+		    <a href="/game/{{game.pk}}/">Update</a>
+		</td>
+		{% endif %}
+	    </tr>
+	    {% empty %}
+	    <tr><td>No games yet.</td></tr>
+	    {% endfor %}
+	</table>
+    </div>
 </div>
 {% endblock %}
