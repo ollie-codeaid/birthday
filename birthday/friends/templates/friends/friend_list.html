@@ -1,6 +1,7 @@
 {% extends "friends/scaffold.html" %}
 {% load friend_extras %}
 {% block content %}
+{% if object_list %}
 {% sort_for_collage object_list as collage_friends %}
 {% for friend_row in collage_friends %}
 <div class="row justify-content-center">
@@ -14,9 +15,17 @@
     </div>
     {% endfor %}
 </div>
-{% empty %}
-<div class="row justify-content-center">
-    <h3>No friends yet.</h3>
-</div>
 {% endfor %}
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 text-center">
+        <h3>Faces will appear here once birthday has commenced.</h3>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 text-center">
+        <p>If you are looking for the map, that is now <a href="/map/">here</a>.</p>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

@@ -9,6 +9,7 @@
 		<th>Points</th>
 		<th>Accomplishments</th>
 	    </tr>
+		{% if object_list %}
 	    {% sort_by_total_points object_list as ordered_friends %}
 	    {% for friend in ordered_friends %}
 	    <tr>
@@ -21,6 +22,13 @@
 		</td>
 	    </tr>
 	    {% endfor %}
+		{% else %}
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Scores will appear here once birthday has commenced.</td>
+		</tr>
+		{% endif %}
 	</table>
     </div>
 </div>

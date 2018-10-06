@@ -8,3 +8,5 @@ media/
 
 *.pyc
 *.pyo
+
+.idea
