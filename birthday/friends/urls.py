@@ -11,7 +11,7 @@ from friends.views import (
         GameDetail, GameList, GameUpdate)
 
 urlpatterns = [
-    path('list', FriendList.as_view(), name='friend-list'),
+    path('', FriendList.as_view(), name='friend-list'),
     path('leaderboard',
          FriendLeaderboard.as_view(),
          name='friend-leaderboard'),
@@ -47,7 +47,7 @@ urlpatterns = [
     path('game/<int:pk>/detail/',
          GameDetail.as_view(),
          name='game-detail'),
-    path('',
+    path('map/',
          TemplateView.as_view(template_name='friends/map.html'),
          name='map'),
 ]
