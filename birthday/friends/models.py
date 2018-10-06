@@ -24,6 +24,13 @@ class Friend(models.Model):
 
         return total_points
 
+    def list_accomplishments(self):
+        accomplishment_list = []
+        for accomplishment in self.has_accomplished.all():
+            accomplishment_list.append(str(accomplishment))
+
+        return ', '.join(accomplishment_list)
+
 
 class Accomplishment(models.Model):
     description = models.CharField(max_length=1023)

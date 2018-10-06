@@ -16,9 +16,7 @@
 		<td>{{ friend.name }}</td>
 		<td>{{ friend.total_points }}</td>
 		<td>
-		    {% for accomplishment in friend.has_accomplished.all %}
-		    {{ accomplishment }}
-		    {% endfor %}
+		    {{ friend.list_accomplishments }}
 		</td>
 	    </tr>
 	    {% endfor %}
