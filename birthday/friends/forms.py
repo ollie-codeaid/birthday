@@ -32,4 +32,4 @@ class AccomplishmentForm(ModelForm):
 class GameForm(ModelForm):
     class Meta:
         model = Game
-        fields = ['title', 'description']
+        fields = ['title', 'description', 'is_hidden']

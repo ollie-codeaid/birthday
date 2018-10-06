@@ -49,3 +49,4 @@ class FriendAccomplishment(models.Model):
 class Game(models.Model):
     title = models.CharField(max_length=256)
     description = models.TextField()
+    is_hidden = models.BooleanField(default=False)

@@ -4,18 +4,18 @@
     <div class="col-sm-12 col-md-6 text-center">
 	<table class="table">
 	    {% for game in object_list %}
+		{% if not game.is_hidden or user.is_authenticated %}
 	    <tr>
 		<td>
 		    <a href="/game/{{game.pk}}/detail/">{{ game.title }}</a>
 		</td>
 		{% if user.is_authenticated %}
 		<td>
-		    <a href="/game/{{game.pk}}/">Update</a>
+		    <a href="/game/{{game.pk}}/">Update ({{ game.is_hidden }})</a>
 		</td>
 		{% endif %}
 	    </tr>
-	    {% empty %}
-	    <tr><td>No games yet.</td></tr>
+		{% endif %}
 	    {% endfor %}
 	</table>
     </div>
